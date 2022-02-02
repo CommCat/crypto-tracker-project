@@ -4,10 +4,55 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link rel="stylesheet" href="./css/reset.css">-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <title>Crypto Tracker</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="mainContainer">
+
+      <div class="container">
+          <h1 class="bold">CryptoTracker</h1>
+
+          <div class="coinType">
+            <h3 class="medium">Bitcoin</h3>
+          </div>
+
+          <div class="coinType">
+            <h3 class="medium">Ethereum</h3>
+          </div>    
+
+          <div class="ChooseCoinType">
+            <form class="lookUp" action="action_page.php">
+            <input type="text" placeholder="Type in currency name" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+
+          <div class="coinType">
+            <h3 class="medium">Bitcoin</h3>
+          </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+
+<!-- -->
