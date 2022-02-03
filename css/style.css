@@ -46,3 +46,8 @@ body{
   height: 250px;
   margin: 10px 0;
 }
+.bitcoin, .ethereum{
+  width: 160px;  
+  font-weight:500;
+  color: blueviolet;
+}

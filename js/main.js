@@ -18,9 +18,9 @@ console.log(divBitcoin)
 
 const getPriceAndShowInDom = async () => {
   const bitcoinPrice = await callApi();
-  const divBitcoinPrice = document.createElement("div");
+  const divBitcoinPrice = document.createElement("p");
   console.log(bitcoinPrice);
-  divBitcoinPrice.textContent = `current price: ${bitcoinPrice.market_data.current_price.eur} €`;
+  divBitcoinPrice.textContent = `current price: ${bitcoinPrice.market_data.current_price.eur} €  ath price: ${ bitcoinPrice.market_data.ath.eur} € ranking:  ${ bitcoinPrice.market_data.market_cap_rank}`;
   divBitcoin.appendChild(divBitcoinPrice);
 };
 getPriceAndShowInDom();
