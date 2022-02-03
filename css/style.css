@@ -12,7 +12,7 @@ body{
 
 .medium{
   font-weight: 700;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .mainContainer{
@@ -54,7 +54,7 @@ body{
   margin: 10px 0;
 }
 .bitcoin, .ethereum{
-  width: 170px;  
+  width: 172px;  
   border: 5px solid rgb(165, 120, 24);
   background-color: rgb(240, 233, 220);
   border-radius: 20px;
