@@ -29,8 +29,7 @@ const divBitcoin = document.querySelector(".bitcoin");
 const getBitcoinAndShowInDom = async () => {
   const bitcoinPrice = await callApi();
   const divBitcoinPrice = document.createElement("p");
-  console.log(bitcoinPrice);
-
+  
   divBitcoinPrice.textContent = `current price: ${bitcoinPrice[0].current_price}€  ath price: ${ bitcoinPrice[0].ath}€ ranking:  ${ bitcoinPrice[0].market_cap_rank}`;
 
   divBitcoin.appendChild(divBitcoinPrice);
@@ -50,7 +49,24 @@ const getEthereumAndShowInDom = async () => {
 };
 getEthereumAndShowInDom();
 
+/*
 
+const button = document.querySelector(".search");
+
+const createNewCurrency = () => {
+  console.log("click");
+  const currency = createHTMLCurrency();
+  divNewCurrency.appendChild(currency);
+};
+
+const createHTMLCurrency = () => {
+  const divNewCurrency = document.createElement("div");
+  divNewCurrency.className = "coinType"
+  return divNewCurrency;
+}
+button.addEventListener("click", createNewCurrency);
+
+*/
 
 
 
