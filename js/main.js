@@ -1,26 +1,57 @@
-import './style.css'
-import './cryptoservice'
+import '../css/style.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
-const llamandoApi = () => fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
 
-llamandoApi()
+
+const URL = "https://api.coingecko.com/api/v3/coins/bitcoin/";
+
+const callApi = async () => {
+  const data= await fetch(URL);
+  const dataParsed = await data.json();
+  console.log(dataParsed.market_data.current_price.eur);
+  return dataParsed;
+};
+callApi()
+
+const divBitcoin = document.querySelector(".bitcoin");
+console.log(divBitcoin)
+
+
+const getPriceAndShowInDom = async () => {
+  const bitcoinPrice = await callApi();
+  const divBitcoinPrice = document.createElement("div");
+  console.log(bitcoinPrice);
+  divBitcoinPrice.textContent = `current price: ${bitcoinPrice.market_data.current_price.eur} €`;
+  divBitcoin.appendChild(divBitcoinPrice);
+};
+getPriceAndShowInDom();
+
+
+
+
+
+
+
+/*  
+
+const callApi = () => fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
+
+callApi()
 .then(function(data){
   return data.json()
 })
 .then(function(data){
   console.log(data.market_data.current_price.eur)
-  return data
+  return data.market_data.current_price.eur
 })
 .catch(function(err){
   return err
 });
 
 
-/*const callApi = () => fetch("https://api.coingecko.com/api/v3/coins/bitcoin");
+
+
+
+const callApi = () => fetch("https://api.coingecko.com/api/v3/coins/bitcoin");
 
 const callApiAgain = () => {
   const result = callApi()
