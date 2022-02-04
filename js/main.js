@@ -1,18 +1,5 @@
 import '../css/style.css'
 
-
-/*
-const URL = "https://api.coingecko.com/api/v3/coins/bitcoin/";
-
-const callApi = async () => {
-  const data= await fetch(URL);
-  const dataParsed = await data.json();
-  console.log(dataParsed.market_data.current_price.eur);
-  return dataParsed;
-};
-callApi()
-*/
-
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=ath%2C%20current_price%2C%20market_cap_rank&per_page=100&page=1&sparkline=false";
 
 const callApi = async () => {
@@ -49,24 +36,41 @@ const getEthereumAndShowInDom = async () => {
 };
 getEthereumAndShowInDom();
 
-/*
 
-const button = document.querySelector(".search");
+const divContainer = document.querySelector(".container");
+const button = document.querySelector(".buttonStyle");
 
-const createNewCurrency = () => {
+const createNewContainer = () => {
   console.log("click");
-  const currency = createHTMLCurrency();
-  divNewCurrency.appendChild(currency);
+  const currencyContainer = createHTMLCurrencyContainer();
+  divContainer.appendChild(currencyContainer);
 };
 
-const createHTMLCurrency = () => {
-  const divNewCurrency = document.createElement("div");
-  divNewCurrency.className = "coinType"
-  return divNewCurrency;
-}
-button.addEventListener("click", createNewCurrency);
+const createHTMLCurrencyContainer = () => {
+  const divNewCurrencyContainer = document.createElement("div");
+  divNewCurrencyContainer.className = "coinType";
 
-*/
+  const divButton = document.createElement("button");
+  divButton.className = "buttonStyle";
+  divButton.textContent = "clear";
+  const handleClick = () => deleteDivFromDom(divNewCurrencyContainer);
+  divButton.onclick = handleClick; 
+  divNewCurrencyContainer.appendChild(divButton);
+
+  return divNewCurrencyContainer;
+};
+
+const deleteDivFromDom = (element) => {
+  console.log(element);
+  element.remove();
+};
+button.addEventListener("click", createNewContainer);
+
+
+
+
+
+
 
 
 
