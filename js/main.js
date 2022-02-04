@@ -1,5 +1,13 @@
 import '../css/style.css'
 
+
+
+const divContainer = document.querySelector(".container");
+const button = document.querySelector("#search");
+const input = document.querySelector("#currencyName");
+const ArrayCurrency = [];
+let counter = 0;
+
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=ath%2C%20current_price%2C%20market_cap_rank&per_page=100&page=1&sparkline=false";
 
 const callApi = async () => {
@@ -37,8 +45,26 @@ const getEthereumAndShowInDom = async () => {
 getEthereumAndShowInDom();
 
 
-const divContainer = document.querySelector(".container");
-const button = document.querySelector(".buttonStyle");
+
+button.addEventListener("click", async () => {
+  let found = false;
+  const newCurrencyData = await callApi();
+  //console.log(newCurrencyData.entries())
+  for (let i = 0; i < newCurrencyData.length; i++) {
+    let name = newCurrencyData[i].id;
+    let currency = input.value;
+    //console.log(newCurrencyData[i]);
+    if(name == currency){ 
+     // console.log(name) 
+      alert("The currency is on the website")                
+    }         
+     found = true; 
+    }   
+    if (found === false){
+    alert("Currency not found. Try again.");
+    }
+
+  });
 
 const createNewContainer = () => {
   console.log("click");
@@ -49,13 +75,22 @@ const createNewContainer = () => {
 const createHTMLCurrencyContainer = () => {
   const divNewCurrencyContainer = document.createElement("div");
   divNewCurrencyContainer.className = "coinType";
-
+  
+//delete div button
   const divButton = document.createElement("button");
   divButton.className = "buttonStyle";
   divButton.textContent = "clear";
   const handleClick = () => deleteDivFromDom(divNewCurrencyContainer);
   divButton.onclick = handleClick; 
-  divNewCurrencyContainer.appendChild(divButton);
+  divNewCurrencyContainer.appendChild(divButton);  
+
+  const moreInfo = document.createElement("p");
+  moreInfo.className = "light";
+  moreInfo.textContent = `For more information about this cryptocurrency go to https://www.coingecko.com/.`;
+
+  divNewCurrencyContainer.appendChild(moreInfo)
+
+
 
   return divNewCurrencyContainer;
 };
@@ -64,8 +99,8 @@ const deleteDivFromDom = (element) => {
   console.log(element);
   element.remove();
 };
-button.addEventListener("click", createNewContainer);
 
+button.addEventListener("click", createNewContainer);
 
 
 

@@ -15,3 +15,6 @@ export const CryptoService = {
     return fetch(`${BASE_URL}coins/$(id)`);
   },
 };
+
+
+  

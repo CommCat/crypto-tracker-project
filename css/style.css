@@ -15,6 +15,11 @@ body{
   font-size: 25px;
 }
 
+.light{
+  font-weight: 500;
+  font-size: 20px;
+}
+
 .mainContainer{
   display: flex;
   /*flex-direction: column;*/
@@ -68,7 +73,7 @@ body{
   width: 600px;
 }
 
-.lookup input[type=text] {
+#currencyName {
   width: 300px;
   padding: 10px;
   font-size: 17px;
@@ -76,27 +81,6 @@ body{
   border-radius: 20px;
   float: left;
   background: #f1f1f1;
-}
-
-.lookup button{
-  /*float: left;*/
-  width: 100px;
-  padding: 10px;
-  font-size: 17px;
-  background: rgb(165, 120, 24);
-  color: white;
-  border: 5px solid;
-  cursor: pointer;  
-}
-
-.lookup button:hover {
-  background: #0b7dda;
-}
-
-.lookup ::after {
-  content: "";
-  clear: both;
-  display: table;
 }
 .buttonStyle{
   width: 90px;
@@ -108,4 +92,8 @@ body{
   border: 5px solid rgb(165, 120, 24);
   border-radius: 20px;
   cursor: pointer; 
+}
+
+#search:hover {
+  background: #0b7dda;
 }
