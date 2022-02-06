@@ -1,4 +1,5 @@
 import '../css/style.css'
+import { CryptoService } from './cryptoservice';
 
 
 
@@ -44,19 +45,27 @@ const getEthereumAndShowInDom = async () => {
 };
 getEthereumAndShowInDom();
 
+const BASE_URL = "https://api.coingecko.com/api/v3/coins/"
 
+const getCoins = async () => {    
+  const data = await fetch(`${BASE_URL}`);
+  const dataParsed = await data.json();
+  return dataParsed;
+};
+getCoins()
 
 button.addEventListener("click", async () => {
+  
   let found = false;
-  const newCurrencyData = await callApi();
-  //console.log(newCurrencyData.entries())
+  const newCurrencyData = await getCoins();
+  console.log(newCurrencyData.entries())
   for (let i = 0; i < newCurrencyData.length; i++) {
     let name = newCurrencyData[i].id;
     let currency = input.value;
-    //console.log(newCurrencyData[i]);
+    console.log(newCurrencyData[i]);
     if(name == currency){ 
-     // console.log(name) 
-      alert("The currency is on the website")                
+      alert("The currency is on the website")   
+      return name;             
     }         
      found = true; 
     }   
@@ -65,16 +74,22 @@ button.addEventListener("click", async () => {
     }
 
   });
+  
+ 
 
-const createNewContainer = () => {
+function createNewContainer() {
   console.log("click");
+  
   const currencyContainer = createHTMLCurrencyContainer();
   divContainer.appendChild(currencyContainer);
-};
+
+
+}
 
 const createHTMLCurrencyContainer = () => {
   const divNewCurrencyContainer = document.createElement("div");
   divNewCurrencyContainer.className = "coinType";
+  
   
 //delete div button
   const divButton = document.createElement("button");
@@ -87,10 +102,7 @@ const createHTMLCurrencyContainer = () => {
   const moreInfo = document.createElement("p");
   moreInfo.className = "light";
   moreInfo.textContent = `For more information about this cryptocurrency go to https://www.coingecko.com/.`;
-
   divNewCurrencyContainer.appendChild(moreInfo)
-
-
 
   return divNewCurrencyContainer;
 };
@@ -101,6 +113,11 @@ const deleteDivFromDom = (element) => {
 };
 
 button.addEventListener("click", createNewContainer);
+
+
+
+
+
 
 
 
